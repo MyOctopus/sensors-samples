@@ -111,15 +111,12 @@ class TMP007:
 		irVoltage = float(rawData) * 156.25 / 1000000
 
 		return irVoltage
-def get_reading():
-    objTemp = tmp.readObjTemp()
-    dieTemp = tmp.readDieTemp()
-    irVoltage = tmp.readSensorVoltage()
-    return (objTemp, dieTemp, irVoltage)
 
 def main():
     tmp = TMP007()
     for x in xrange(10):
-        temp, temp_die, voltage = get_reading()
+        temp = tmp.readObjTemp()
+        temp_die = tmp.readDieTemp()
+        voltage = tmp.readSensorVoltage()
         print "TMP007: Die Temp: %s, Voltage: %s, Temp Reading: %s" % (temp_die, voltage, temp)
 
